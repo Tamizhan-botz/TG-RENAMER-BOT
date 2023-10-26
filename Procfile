@@ -1,1 +1,2 @@
-worker: python -m renamer
+web: python bot.py 
+worker: python bot.py
