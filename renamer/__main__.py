@@ -11,8 +11,11 @@ logging.getLogger().setLevel(logging.WARNING)
 
 import platform
 from .config import Config
-from pyrogram import Client, __version__, idle
+from pyrogram import Client, __version__
 from pyromod import listen
+from pyrogram.raw.all import layer
+from aiohttp import web
+from route import web_server
 
 
 def main():
@@ -21,8 +24,8 @@ def main():
                  bot_token=Config.BOT_TOKEN,
                  api_id=Config.API_ID,
                  api_hash=Config.API_HASH,
-                 plugins=dict(root="renamer/plugins"),
-                 workers=100)
+                 plugins={"root": "plugins"},
+                 workers=200)
 
     Renamer.start()
     me = Renamer.get_me()
